@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Counter App</title>
+    <meta name="description" content="Counter Application">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+            font-family:Inter,sans-serif;
+        }
+
+        main {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #counterbox {
+            width: 416px;
+            height: 172px;
+            top: 79px;
+            left: 40px;
+            gap: 0px;
+            border-radius: 16px;
+            opacity: 0px;
+
+        }
+
+        #counterheader {
+            text-align: center;
+            width: 416px;
+            height: 76px;
+            padding: 24px 0px;
+            gap: 0px;
+            border-bottom: 1px solid gray;
+            opacity: 0px;
+        }
+
+        #counterheader h3 {
+            size: 18px;
+            line-height: 28px;
+        }
+
+        .counterbody {
+            display: flex;
+            flex-wrap: nowrap;
+            width: 416px;
+            height: 96px;
+            padding: 24px;
+            gap: 16px;
+            opacity: 0px;
+
+        }
+
+        .countbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .countbox input {
+            text-align: center;
+            border: none;
+            background-color: inherit;
+            padding: 8px 12px;
+            width: 176px;
+            height: 40px;
+            gap: 6px;
+            opacity: 0px;
+            font-size: 16px;
+        }
+
+        #counterbtn {
+            width: 176px;
+            height: 48px;
+            opacity: 0px;
+            padding: 12px 18px;
+            gap: 6px;
+            border-radius: 8px;
+            border: 2px;
+
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="counterbox">
+            <div id="counterheader">
+                <h3>Counter</h3>
+            </div>
+            <div class="counterbody">
+                <div class="countbox">
+                    <input type="number" value=0 id="countdisplay" disabled></input>
+                </div>
+                <div class="countbox">
+                    <button id="counterbtn">Count</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        let counter = 0;
+        const counterdisplay = document.getElementById("countdisplay");
+        const counterbtn = document.getElementById("counterbtn")
+
+        counterbtn.addEventListener("click", () => {
+            counter++;
+            counterdisplay.value = counter;
+        });
+
+
+    </script>
+</body>
+
+</html>
