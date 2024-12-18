@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>TEmpereature Converter App</title>
+    <meta name="description" content="temperature Converter Application">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+            font-family: Inter, sans-serif;
+        }
+
+        main {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #tempConverterbox {
+            width: 416px;
+            height: 166px;
+            top: 79px;
+            left: 40px;
+            gap: 0px;
+            border-radius: 16px;
+            opacity: 0px;
+        }
+
+        #counterheader {
+            width: 416px;
+            height: 76px;
+            padding: 24px;
+            gap: 0px;
+            border-bottom: 1px;
+            opacity: 0px;
+            text-align: center;
+        }
+
+        #counterheader h3 {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 18px;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+        }
+
+        .converterbody {
+            display: flex;
+            flex-wrap: nowrap;
+            width: 416px;
+            height: 90px;
+            padding: 24px;
+            gap: 16px;
+            opacity: 0px;
+        }
+
+        .tempbox {
+            width: 162.5px;
+            height: 42px;
+            padding: 1px 6px;
+            gap: 0px;
+            border-radius: 8px;
+            border: 1px;
+            opacity: 0px;
+
+        }
+
+        .tempinsidebox {
+            width: 150.5px;
+            height: 40px;
+            padding: 6px;
+            gap: 8px;
+            border-radius: 8px;
+            opacity: 0px;
+        }
+
+        .tempinsidebox div {
+            width: 134.5px;
+            height: 24px;
+            gap: 0px;
+            display: flex;
+            justify-content: space-between;
+            opacity: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="tempConverterbox">
+            <div id="counterheader">
+                <h3>TempConv</h3>
+            </div>
+            <div class="converterbody">
+                <div class="tempbox">
+                    <div class="tempinsidebox">
+                        <div>
+                            <input type="number" value=0 class="temopdisplay" id="tempC" max="1000" min="-273.15"></input>
+                            <span>°C</span>
+                        </div>
+                    </div>
+                </div>
+                <div> = </div>
+                <div class="tempbox">
+                    <div class="tempinsidebox">
+                        <div>
+                            <input type="number" value=32 class="temopdisplay" id="tempF" max="1832" min="-459.67"></input>
+                            <span>°F</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        let counter = 0;
+        const tempC = document.getElementById("tempC");
+        const tempF = document.getElementById("tempF")
+
+        tempC.addEventListener("input", () => {
+            var value = parseFloat(tempC.value).toFixed(2);
+
+            if (value === "") {
+                tempF.value = ""
+            } else if (value > 1000) {
+                tempC.value = 1000
+                value = 1000;
+            } else if (value < -273.15) {
+                tempC.value = -273.15;
+                value = -273.15;
+            }
+            value = parseFloat((value * 1.8)).toFixed(2) + 32;
+
+            tempF.value = parseInt(value);
+        });
+
+        tempF.addEventListener("input", () => {
+            var value = parseFloat(tempF.value).toFixed(2);
+
+            if (value === "") {
+                tempF.value = ""
+            } else if (value > 1832) {
+                tempF.value = 1832;
+                value = 1832;
+            } else if (value < -459.67) {
+                tempF.value = -459.67;
+                value = -459.67;
+            }
+
+            value = parseFloat((value - 32) / 1.8).toFixed(2);
+
+            tempC.value = parseInt(value);
+        });
+
+
+    </script>
+</body>
+
+</html>
